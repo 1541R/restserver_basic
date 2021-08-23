@@ -20,7 +20,9 @@ const usuariosGet = async (req = request, res = response) => {
             usuarios
         })
     } catch (error) {
-        next(error);
+        res.json({
+            error
+        })
     }
 
 }
