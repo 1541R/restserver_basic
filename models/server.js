@@ -20,7 +20,11 @@ class Server {
     }
 
     async connectDB(){
-        await dbConection();
+        try {
+            await dbConection();
+        } catch (error) {
+            throw error;
+        }
     }
 
     middlewares(){
