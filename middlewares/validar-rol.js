@@ -20,8 +20,7 @@ const adminRole = (req, res = response, next) => {
 }
 
 const porRole = ( ...roles ) => {
-
-
+    
     return ( req, res = response, next ) =>{
         if(!req.usuario){
             return res.status(500).json({
@@ -38,8 +37,6 @@ const porRole = ( ...roles ) => {
         console.log(roles);
         next();
     }
-
-    
 
 }
 
