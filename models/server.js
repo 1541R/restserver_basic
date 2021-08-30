@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const usuarios = require('../routes/usuarios');
 const auth = require('../routes/auth');
+const buscar = require('../routes/buscar');
+const categorias = require('../routes/categorias');
+const productos = require('../routes/productos');
 const { dbConection } = require('../database/config');
 class Server {
 
@@ -9,7 +12,13 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
 
-        this.authPath = '/api/auth';
+        this.paths = {
+            authPath : '/api/auth',
+            buscarPath : '/api/buscar',
+            usuariosPath : '/api/usuarios',
+            categoriasPath : '/api/categorias',
+            productosPath : '/api/productos',
+        }
 
         //Conectar con base de datos
         this.connectDB();
@@ -41,9 +50,12 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.authPath, auth);
-        this.app.use('/api/usuarios', usuarios);
 
+        this.app.use(this.paths.authPath, auth);
+        this.app.use(this.paths.buscarPath, buscar);
+        this.app.use(this.paths.categoriasPath, categorias);
+        this.app.use(this.paths.usuariosPath, usuarios);
+        this.app.use(this.paths.productosPath, productos)
     }
 
     listen(){
