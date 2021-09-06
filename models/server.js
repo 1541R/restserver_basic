@@ -2,12 +2,13 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 
 const cors = require('cors');
+
+/** RUTAS */
 const usuarios = require('../routes/usuarios');
 const auth = require('../routes/auth');
 const buscar = require('../routes/buscar');
 const categorias = require('../routes/categorias');
 const productos = require('../routes/productos');
-
 const uploads = require('../routes/uploads');
 
 const { dbConection } = require('../database/config');
